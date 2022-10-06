@@ -14,12 +14,12 @@ public class CydeoApp {
 
         ApplicationContext context = new AnnotationConfigApplicationContext(ProjectConfig.class);
 
-        CommentsService cs1 = context.getBean(CommentsService.class);
-        CommentsService cs2 = context.getBean(CommentsService.class);
-
-        System.out.println(cs1);
-        System.out.println(cs2);
-
-        System.out.println(cs1==cs2);
+//        CommentsService cs1 = context.getBean(CommentsService.class);
+//        CommentsService cs2 = context.getBean(CommentsService.class);
+//
+//        System.out.println(cs1);
+//        System.out.println(cs2);
+//
+//        System.out.println(cs1==cs2);
     }
 }
