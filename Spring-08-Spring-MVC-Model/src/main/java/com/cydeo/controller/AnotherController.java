@@ -9,11 +9,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.ArrayList;
 import java.util.List;
 
-@Controller
-@RequestMapping("/mentor")
-public class MentorController {
 
-    @RequestMapping("/list")  //http://localhost:8080/mentor/list
+@Controller
+@RequestMapping("/another")
+public class AnotherController {
+
+    @RequestMapping("/list")  //http://localhost:8080/another/list
     public String showTable(Model model){
 
         List<Mentor> mentorList = new ArrayList<>();
