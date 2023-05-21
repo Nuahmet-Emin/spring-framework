@@ -11,12 +11,11 @@ import lombok.NoArgsConstructor;
 @Table(name = "departments")
 @NoArgsConstructor
 @Data
-public class Department {
+public class Department extends BaseEntity {
 
-    @Id
     private String department;
-
     private String division;
+
 
     public Department(String department, String division) {
         this.department = department;
