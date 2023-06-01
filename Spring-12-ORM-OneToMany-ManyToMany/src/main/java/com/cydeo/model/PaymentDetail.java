@@ -1,6 +1,5 @@
 package com.cydeo.model;
 
-import com.cydeo.enums.Status;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -10,20 +9,19 @@ import java.time.LocalDate;
 
 @Entity
 @Data
-@Table(name = "payments")
+@Table(name = "paymentDetails")
 @NoArgsConstructor
-public class Payment {
+public class PaymentDetail {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long Id;
+
+    private BigDecimal merchantPayoutAmount;
+    private BigDecimal commissionAmount;
 
     @Column(columnDefinition = "DATE")
-    private LocalDate createdDate;
-
-    private BigDecimal amount;
-
-    private Status paymentStatus;
+    private LocalDate payoutDate;
 
 
 
