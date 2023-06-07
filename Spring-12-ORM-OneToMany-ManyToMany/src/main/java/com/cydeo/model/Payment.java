@@ -9,8 +9,8 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Entity
-@Data
 @Table(name = "payments")
+@Data
 @NoArgsConstructor
 public class Payment {
 
@@ -22,18 +22,15 @@ public class Payment {
     private LocalDate createdDate;
 
     private BigDecimal amount;
-
     private Status paymentStatus;
+
+
+    @OneToOne(cascade = CascadeType.ALL)
+    private PaymentDetail paymentDetail;
 
     public Payment(LocalDate createdDate, BigDecimal amount, Status paymentStatus) {
         this.createdDate = createdDate;
         this.amount = amount;
         this.paymentStatus = paymentStatus;
     }
-
-    @OneToOne(cascade = CascadeType.ALL)
-    private PaymentDetail paymentDetail;
-
-
-
 }
