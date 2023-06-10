@@ -18,11 +18,17 @@ public class DataGenerator implements CommandLineRunner {
 
     private final CustomerRepository customerRepository;
 
+    private  final ItemRepository itemRepository;
 
-    public DataGenerator(PaymentRepository paymentRepository, MerchantRepository merchantRepository, CustomerRepository customerRepository) {
+    private final CartRepository cartRepository;
+
+
+    public DataGenerator(PaymentRepository paymentRepository, MerchantRepository merchantRepository, CustomerRepository customerRepository, ItemRepository itemRepository, CartRepository cartRepository) {
         this.paymentRepository = paymentRepository;
         this.merchantRepository = merchantRepository;
         this.customerRepository = customerRepository;
+        this.itemRepository = itemRepository;
+        this.cartRepository = cartRepository;
     }
 
     @Override
@@ -50,6 +56,26 @@ public class DataGenerator implements CommandLineRunner {
 
         payment1.setMerchant(merchant1);
         payment2.setMerchant(merchant1);
+
+        Item item1 = new Item("Milk","M01");
+        Item item2 = new Item("Sugar","S01");
+        Item item3 = new Item("Bread","B01");
+
+        Cart cart1 = new Cart() ;
+        Cart cart2 = new Cart() ;
+
+        cart1.setItemList(Arrays.asList(item1,item2,item3));
+        cart2.setItemList(Arrays.asList(item1,item2));
+
+        itemRepository.save(item1);
+        itemRepository.save(item2);
+        itemRepository.save(item3);
+
+        cartRepository.save(cart1);
+        cartRepository.save(cart2);
+
+
+
 
         merchantRepository.save(merchant1);
 
