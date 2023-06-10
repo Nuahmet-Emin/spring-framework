@@ -32,6 +32,11 @@ public class DataGenerator implements CommandLineRunner {
 
         payment2.setPaymentDetail(paymentDetail2);
 
+        Merchant merchant1 = new Merchant("AmazonSubMerchant","M123",new BigDecimal("0.25"),new BigDecimal("3.25"),5);
+
+        payment1.setMerchant(merchant1);
+        payment2.setMerchant(merchant1);
+
         paymentRepository.save(payment1);
         paymentRepository.save(payment2);
 
