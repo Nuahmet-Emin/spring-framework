@@ -26,10 +26,12 @@ public class Movie extends BaseEntity{
     @Enumerated(EnumType.STRING)
     private MovieState state;
     private BigDecimal price;
+
+
     @ManyToMany
-    @JoinTable(name="movie_genre_rel",
-    joinColumns = @JoinColumn (name="movie_id"),
-    inverseJoinColumns = @JoinColumn(name="genre_id"))
+    @JoinTable(name = "movie_genre_rel",
+            joinColumns = @JoinColumn(name="movie_id"),
+            inverseJoinColumns = @JoinColumn(name = "genre_id"))
     private List<Genre> genreList;
 
 
