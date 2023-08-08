@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "Employees")
+@Table(name = "employees")
 @Data
 @NoArgsConstructor
 public class Employee extends BaseEntity {
@@ -21,5 +21,9 @@ public class Employee extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private Gender gender;
     private Integer salary;
+
+    private Department department;
+
+    private Region region;
 
 }
