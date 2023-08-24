@@ -35,5 +35,8 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long> {
 
     //Display top unique 3 employees that is making less than
     List<Employee> findDistinctTopBySalaryLessThan(Integer salary);
+
+    //Display all employees that do not have email address
+    List<Employee> findByEmailIsNotNull();
 }
 
