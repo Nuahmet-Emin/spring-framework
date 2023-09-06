@@ -54,6 +54,38 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long> {
     @Query("Select e From Employee e Where e.email =?1 and e.salary =?2 ")
     Employee getEmployeeDetail(String email, int salary);
 
+    //Not Equal
+    @Query("SELECT e FROM Employee e WHERE e.salary<>?1")
+    List<Employee> getEmployeeSalaryNotEqual(int salary);
+
+    //like/contains/startswith/endswith
+    @Query("SELECT e FROM Employee e WHERE e.firstName LIKE ?1")
+    List<Employee> getEmployeeFirstNameLike(String pattern);
+
+    //less than
+    @Query("SELECT e FROM Employee e WHERE e.salary < ?1")
+    List<Employee> getEmployeeSalaryLessThan(int salary);
+
+    //greater than
+    @Query("SELECT e FROM Employee e WHERE e.salary > ?1")
+    List<Employee> getEmployeeSalaryGreaterThan(int salary);
+
+
+    //between
+    @Query("SELECT e FROM Employee e WHERE e.salary BETWEEN ?1 and ?2 ")
+    List<Employee> getEmployeeSalaryBetween(int Salary1, int Salary2);
+
+    //before dates
+    @Query("SELECT e FROM Employee e WHERE e.hireDate < ?1")
+    List<Employee> getEmployeeHireDateBefore(LocalDate date);
+
+    //Null
+    @Query("select e from Employee e where e.email IS null ")
+    List<Employee> getEmployeeEmailIsNull();
+
+    //NotNull
+    @Query("select e from Employee e where e.email IS NOT null ")
+    List<Employee> getEmployeeEmailIsNotNull();
 
 
 }
