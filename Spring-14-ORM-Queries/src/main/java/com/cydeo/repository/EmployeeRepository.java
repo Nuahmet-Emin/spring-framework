@@ -3,6 +3,7 @@ package com.cydeo.repository;
 import com.cydeo.entity.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -94,6 +95,14 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long> {
     //Sorting in descending order
     @Query("select e from Employee e ORDER BY e.salary desc ")
     List<Employee> getEmployeeSalaryOrderDesc();
+
+    @Query(value = "SELECT * FROM employees WHERE salary ?1, nativeQuery= ture")
+    List<Employee> readEmployeeDetailBySalary(int Salary);
+
+    @Query("SELECT e from Employee e WHERE e.salary = :salary")
+    List<Employee>  getEmployeeSalary(@Param("salary")int salary);
+
+
 
 
 }
