@@ -32,7 +32,7 @@ public class CourseController_ResponseWrapper {
 
     @GetMapping("{id}")
     public ResponseEntity<ResponseWrapper> getCourseById(@PathVariable("id") Long courseId){
-        return ResponseEntity.ok(new ResponseWrapper("Course: " + courseId + "retrieved",courseService.getCourseById(courseId)));
+        return ResponseEntity.ok(new ResponseWrapper("Course: " + courseId + " retrieved",courseService.getCourseById(courseId)));
                 /*.status(HttpStatus.OK)
                 .header("Version","Cydeo.V3")
                 .body(new ResponseWrapper("Successfully Retrieve", courseService.getCourseById(courseId)));*/
