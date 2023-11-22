@@ -18,11 +18,15 @@ public class User extends BaseEntity {
 
 //    @JsonIgnore
     private String email;
+
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
+
     private String username;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "account_details_id")
+    @JsonManagedReference // is forward part of reference  - the one that gets serialized normally
     private Account account;
 
 }
