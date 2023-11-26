@@ -5,6 +5,8 @@ import com.cydeo.entity.Genre;
 import com.cydeo.entity.MovieCinema;
 import com.cydeo.repository.GenreRepository;
 import com.cydeo.repository.MovieCinemaRepository;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -66,8 +68,18 @@ public class Consume_Webclient {
         return webClient
                 .get()
                 .uri("/flux-movie-cinemas")
+                .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                 .retrieve()
                 .bodyToFlux(MovieCinema.class);
+  }
+
+  @GetMapping("/mono/{id}")
+    public Mono<MovieCinema> readMonoWithWebClient(@PathVariable("id") Long id){
+        return webClient
+                .get()
+                .uri("/mono-movie-cinema/{id}",id)
+                .retrieve()
+                .bodyToMono(MovieCinema.class);
   }
 
 }
