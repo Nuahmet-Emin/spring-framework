@@ -4,6 +4,7 @@ package com.cydeo.controller;
 import com.cydeo.entity.MovieCinema;
 import com.cydeo.repository.GenreRepository;
 import com.cydeo.repository.MovieCinemaRepository;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -30,12 +31,17 @@ public class Consume_Webclient {
 
     }
 
-    @GetMapping("/mono-movie-cinema/{id}")
+  /*  @GetMapping("/mono-movie-cinema/{id}")
     public Mono<MovieCinema> readById(@PathVariable("id") Long id){
 
         return Mono.just(movieCinemaRepository.findById(id).get())    ;
-    }
+    }*/
 
+    @GetMapping("/mono-movie-cinema/{id}")
+    public ResponseEntity<Mono<MovieCinema>>readById(@PathVariable("id") Long id){
+
+        return ResponseEntity.ok(Mono.just(movieCinemaRepository.findById(id).get()))    ;
+    }
 
 }
 
