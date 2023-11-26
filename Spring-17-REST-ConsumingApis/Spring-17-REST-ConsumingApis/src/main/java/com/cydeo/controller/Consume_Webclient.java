@@ -7,12 +7,14 @@ import com.cydeo.repository.GenreRepository;
 import com.cydeo.repository.MovieCinemaRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RestController
 public class Consume_Webclient {
 
+    private WebClient webClient = WebClient.builder().baseUrl("http://localhost:8080").build();
 
   private final MovieCinemaRepository movieCinemaRepository;
   private final GenreRepository genreRepository;
@@ -55,6 +57,18 @@ public class Consume_Webclient {
 
        return Mono.empty();
     }
+
+    // ------------------------Webclient-------------------------
+
+  @GetMapping("/flux")
+    public Flux<MovieCinema> readWithWebClient(){
+
+        return webClient
+                .get()
+                .uri("/flux-movie-cinemas")
+                .retrieve()
+                .bodyToFlux(MovieCinema.class);
+  }
 
 }
 
